@@ -1,0 +1,2776 @@
+[
+    {
+        "id": "1579a23b.37e49e",
+        "type": "subflow",
+        "name": "Start TV",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 50,
+                "y": 30,
+                "wires": [
+                    {
+                        "id": "49639360.81290c"
+                    },
+                    {
+                        "id": "e94aedbe.2de8d"
+                    }
+                ]
+            }
+        ],
+        "out": []
+    },
+    {
+        "id": "99a45a62.889d68",
+        "type": "api-call-service",
+        "z": "1579a23b.37e49e",
+        "name": "TV Power Toggle",
+        "server": "82147d23.08b5d",
+        "service_domain": "script",
+        "service": "tv_power",
+        "data": "{\"entity_id\":\"script.tv_power\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "x": 260,
+        "y": 130,
+        "wires": [
+            [
+                "4803051b.573b4c"
+            ]
+        ]
+    },
+    {
+        "id": "7f22fc36.67d4d4",
+        "type": "better-sonos-control",
+        "z": "1579a23b.37e49e",
+        "confignode": "15f0eb17.25afd5",
+        "name": "Mute Sonos",
+        "mode": "",
+        "track": "",
+        "volume": "volume",
+        "volume_value": "0",
+        "x": 500,
+        "y": 30,
+        "wires": []
+    },
+    {
+        "id": "49639360.81290c",
+        "type": "time-range-switch",
+        "z": "1579a23b.37e49e",
+        "name": "Night",
+        "lat": "60.14412",
+        "lon": "16.16977",
+        "startTime": "22:00",
+        "endTime": "11:00",
+        "startOffset": 0,
+        "endOffset": 0,
+        "x": 180,
+        "y": 30,
+        "wires": [
+            [
+                "99522248.ee48f"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "e94aedbe.2de8d",
+        "type": "api-current-state",
+        "z": "1579a23b.37e49e",
+        "name": "TV:n på?",
+        "server": "82147d23.08b5d",
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "override_topic": true,
+        "entity_id": "sensor.lg_tv_bt_mon",
+        "state_type": "str",
+        "override_payload": true,
+        "override_data": true,
+        "x": 190,
+        "y": 80,
+        "wires": [
+            [
+                "a3e139b3.788838"
+            ]
+        ]
+    },
+    {
+        "id": "a3e139b3.788838",
+        "type": "switch",
+        "z": "1579a23b.37e49e",
+        "name": "PÅ / Av",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "ON",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "OFF",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 350,
+        "y": 80,
+        "wires": [
+            [
+                "25aff66d.66b33a"
+            ],
+            [
+                "71e5d530.2f814c"
+            ]
+        ]
+    },
+    {
+        "id": "4803051b.573b4c",
+        "type": "delay",
+        "z": "1579a23b.37e49e",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "11",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 430,
+        "y": 130,
+        "wires": [
+            [
+                "25aff66d.66b33a"
+            ]
+        ]
+    },
+    {
+        "id": "99522248.ee48f",
+        "type": "api-current-state",
+        "z": "1579a23b.37e49e",
+        "name": "Åsa hemma",
+        "server": "82147d23.08b5d",
+        "outputs": 1,
+        "halt_if": "not_home",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "override_topic": true,
+        "entity_id": "sensor.asa_home_status",
+        "state_type": "str",
+        "override_payload": true,
+        "override_data": true,
+        "x": 330,
+        "y": 30,
+        "wires": [
+            [
+                "7f22fc36.67d4d4"
+            ]
+        ]
+    },
+    {
+        "id": "fdb77b8c.a12ef8",
+        "type": "api-call-service",
+        "z": "1579a23b.37e49e",
+        "name": "Set HDMI3 (tivo)",
+        "server": "82147d23.08b5d",
+        "service_domain": "script",
+        "service": "tv_hdmi3",
+        "data": "{\"entity_id\":\"script.tv_hdmi3\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "output_location": "payload",
+        "output_location_type": "msg",
+        "x": 750,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "25aff66d.66b33a",
+        "type": "change",
+        "z": "1579a23b.37e49e",
+        "name": "Set ON",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "ON",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 80,
+        "wires": [
+            [
+                "fdb77b8c.a12ef8"
+            ]
+        ]
+    },
+    {
+        "id": "71e5d530.2f814c",
+        "type": "change",
+        "z": "1579a23b.37e49e",
+        "name": "Set ON",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "ON",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 90,
+        "y": 130,
+        "wires": [
+            [
+                "99a45a62.889d68"
+            ]
+        ]
+    },
+    {
+        "id": "95f6e73a.bece68",
+        "type": "subflow",
+        "name": "Sub TV Sonos and Shield",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 60,
+                "y": 30,
+                "wires": [
+                    {
+                        "id": "549f2e8c.5e951"
+                    },
+                    {
+                        "id": "8638e2ff.98022"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 1020,
+                "y": 230,
+                "wires": [
+                    {
+                        "id": "a341faf9.7188b8",
+                        "port": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "1a7ef720.dced79",
+        "type": "api-call-service",
+        "z": "95f6e73a.bece68",
+        "name": "TV Power Toggle",
+        "server": "82147d23.08b5d",
+        "service_domain": "script",
+        "service": "tv_power",
+        "data": "{\"entity_id\":\"script.tv_power\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "x": 150,
+        "y": 350,
+        "wires": [
+            [
+                "55520b71.765fc4",
+                "1398e803.29aeb8"
+            ]
+        ]
+    },
+    {
+        "id": "d4ffdcde.15062",
+        "type": "better-sonos-control",
+        "z": "95f6e73a.bece68",
+        "confignode": "15f0eb17.25afd5",
+        "name": "Mute Sonos",
+        "mode": "",
+        "track": "",
+        "volume": "volume",
+        "volume_value": "0",
+        "x": 760,
+        "y": 30,
+        "wires": []
+    },
+    {
+        "id": "8638e2ff.98022",
+        "type": "time-range-switch",
+        "z": "95f6e73a.bece68",
+        "name": "Night (22 - 11)",
+        "lat": "60.14412",
+        "lon": "16.16977",
+        "startTime": "22:00",
+        "endTime": "11:00",
+        "startOffset": 0,
+        "endOffset": 0,
+        "x": 260,
+        "y": 30,
+        "wires": [
+            [
+                "35337ff1.6d7dd"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "549f2e8c.5e951",
+        "type": "api-current-state",
+        "z": "95f6e73a.bece68",
+        "name": "TV:n på?",
+        "server": "82147d23.08b5d",
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "override_topic": true,
+        "entity_id": "sensor.lg_tv_bt_mon",
+        "state_type": "str",
+        "override_payload": true,
+        "override_data": true,
+        "x": 100,
+        "y": 130,
+        "wires": [
+            [
+                "6156b129.133f6"
+            ]
+        ]
+    },
+    {
+        "id": "cbedb4a4.964a28",
+        "type": "api-call-service",
+        "z": "95f6e73a.bece68",
+        "name": "Set HDMI1 (spel)",
+        "server": "82147d23.08b5d",
+        "service_domain": "script",
+        "service": "tv_hdmi1",
+        "data": "{\"entity_id\":\"script.tv_hdmi1\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "x": 670,
+        "y": 350,
+        "wires": [
+            [
+                "7d70c81f.05bb68"
+            ]
+        ]
+    },
+    {
+        "id": "fd37f500.1d49f8",
+        "type": "api-call-service",
+        "z": "95f6e73a.bece68",
+        "name": "Set HDMI1 (spel)",
+        "server": "82147d23.08b5d",
+        "service_domain": "script",
+        "service": "tv_hdmi1",
+        "data": "{\"entity_id\":\"script.tv_hdmi1\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "x": 600,
+        "y": 100,
+        "wires": [
+            [
+                "3b4a14aa.02420c"
+            ]
+        ]
+    },
+    {
+        "id": "6156b129.133f6",
+        "type": "switch",
+        "z": "95f6e73a.bece68",
+        "name": "PÅ / Av",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "ON",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "OFF",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 240,
+        "y": 130,
+        "wires": [
+            [
+                "3060893b.87dea6"
+            ],
+            [
+                "a928e58a.5808a8"
+            ]
+        ]
+    },
+    {
+        "id": "b3c63c9a.a4b13",
+        "type": "delay",
+        "z": "95f6e73a.bece68",
+        "name": "1s",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 760,
+        "y": 150,
+        "wires": [
+            [
+                "9ea158d.ca868a8"
+            ]
+        ]
+    },
+    {
+        "id": "7d70c81f.05bb68",
+        "type": "change",
+        "z": "95f6e73a.bece68",
+        "name": "Set ON",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "ON",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 850,
+        "y": 350,
+        "wires": [
+            [
+                "9ea158d.ca868a8"
+            ]
+        ]
+    },
+    {
+        "id": "3b4a14aa.02420c",
+        "type": "change",
+        "z": "95f6e73a.bece68",
+        "name": "Set ON",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "ON",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 770,
+        "y": 100,
+        "wires": [
+            [
+                "b3c63c9a.a4b13"
+            ]
+        ]
+    },
+    {
+        "id": "a928e58a.5808a8",
+        "type": "change",
+        "z": "95f6e73a.bece68",
+        "name": "Set ON",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "ON",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 430,
+        "y": 150,
+        "wires": [
+            [
+                "1a7ef720.dced79",
+                "b3c63c9a.a4b13"
+            ]
+        ]
+    },
+    {
+        "id": "55520b71.765fc4",
+        "type": "delay",
+        "z": "95f6e73a.bece68",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "11",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 340,
+        "y": 350,
+        "wires": [
+            [
+                "9356c8a5.cfad48"
+            ]
+        ]
+    },
+    {
+        "id": "35337ff1.6d7dd",
+        "type": "api-current-state",
+        "z": "95f6e73a.bece68",
+        "name": "Åsa hemma",
+        "server": "82147d23.08b5d",
+        "outputs": 1,
+        "halt_if": "not_home",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "override_topic": true,
+        "entity_id": "sensor.asa_home_status",
+        "state_type": "str",
+        "override_payload": true,
+        "override_data": true,
+        "x": 580,
+        "y": 30,
+        "wires": [
+            [
+                "d4ffdcde.15062"
+            ]
+        ]
+    },
+    {
+        "id": "9356c8a5.cfad48",
+        "type": "change",
+        "z": "95f6e73a.bece68",
+        "name": "Set ON",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "ON",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 490,
+        "y": 350,
+        "wires": [
+            [
+                "cbedb4a4.964a28"
+            ]
+        ]
+    },
+    {
+        "id": "3060893b.87dea6",
+        "type": "change",
+        "z": "95f6e73a.bece68",
+        "name": "Set ON",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "ON",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 430,
+        "y": 100,
+        "wires": [
+            [
+                "fd37f500.1d49f8"
+            ]
+        ]
+    },
+    {
+        "id": "b1196f37.b1a0f",
+        "type": "mqtt out",
+        "z": "95f6e73a.bece68",
+        "name": "",
+        "topic": "monitor/lgtv_bt",
+        "qos": "",
+        "retain": "true",
+        "broker": "ac288c82.fa0db",
+        "x": 510,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "1398e803.29aeb8",
+        "type": "change",
+        "z": "95f6e73a.bece68",
+        "name": "Set ON",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "ON",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 340,
+        "y": 300,
+        "wires": [
+            [
+                "b1196f37.b1a0f"
+            ]
+        ]
+    },
+    {
+        "id": "9ea158d.ca868a8",
+        "type": "api-call-service",
+        "z": "95f6e73a.bece68",
+        "name": "Wake Shield",
+        "server": "82147d23.08b5d",
+        "service_domain": "media_player",
+        "service": "androidtv_key",
+        "data": "{\"entity_id\":\"media_player.shield\",\"key\":\"KEYCODE_WAKEUP\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "output_location": "payload",
+        "output_location_type": "msg",
+        "x": 770,
+        "y": 230,
+        "wires": [
+            [
+                "a341faf9.7188b8"
+            ]
+        ]
+    },
+    {
+        "id": "a341faf9.7188b8",
+        "type": "change",
+        "z": "95f6e73a.bece68",
+        "name": "Set ON",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "ON",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 920,
+        "y": 230,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "15f0eb17.25afd5",
+        "type": "better-sonos-config",
+        "z": "",
+        "name": "Playbar",
+        "serialnum": "B8-E9-37-76-67-7C:9",
+        "ipaddress": "192.168.111.7"
+    },
+    {
+        "id": "ac288c82.fa0db",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "Mosquitto",
+        "broker": "192.168.111.90",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "68db56a0.a403b8",
+        "type": "server-state-changed",
+        "z": "4ecb38da.992f98",
+        "name": "Shield Twitch",
+        "server": "82147d23.08b5d",
+        "entityidfilter": "input_boolean.twitch_trigger",
+        "entityidfiltertype": "substring",
+        "outputinitially": false,
+        "state_type": "str",
+        "haltifstate": "off",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 2,
+        "x": 80,
+        "y": 40,
+        "wires": [
+            [
+                "a2152bb0.b61468"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "42a8d5b2.6bd81c",
+        "type": "server-state-changed",
+        "z": "4ecb38da.992f98",
+        "name": "youtube trigger",
+        "server": "82147d23.08b5d",
+        "entityidfilter": "input_boolean.youtube_trigger",
+        "entityidfiltertype": "substring",
+        "outputinitially": false,
+        "state_type": "str",
+        "haltifstate": "off",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 2,
+        "x": 90,
+        "y": 100,
+        "wires": [
+            [
+                "7f4e152f.17592c"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "8c11ed4d.38e4f",
+        "type": "server-state-changed",
+        "z": "4ecb38da.992f98",
+        "name": "kodi trigger",
+        "server": "82147d23.08b5d",
+        "entityidfilter": "input_boolean.kodi_trigger",
+        "entityidfiltertype": "substring",
+        "outputinitially": false,
+        "state_type": "str",
+        "haltifstate": "off",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 2,
+        "x": 70,
+        "y": 150,
+        "wires": [
+            [
+                "f7ccc75.3638b38"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "52b3998.1fa0e68",
+        "type": "server-state-changed",
+        "z": "4ecb38da.992f98",
+        "name": "netflix trigger",
+        "server": "82147d23.08b5d",
+        "entityidfilter": "input_boolean.netflix_trigger",
+        "entityidfiltertype": "substring",
+        "outputinitially": false,
+        "state_type": "str",
+        "haltifstate": "off",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 2,
+        "x": 80,
+        "y": 200,
+        "wires": [
+            [
+                "aaa9e1b5.8b58"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "7f123bec.d24514",
+        "type": "server-state-changed",
+        "z": "4ecb38da.992f98",
+        "name": "tv4play trigger",
+        "server": "82147d23.08b5d",
+        "entityidfilter": "input_boolean.tv4play_trigger",
+        "entityidfiltertype": "substring",
+        "outputinitially": false,
+        "state_type": "str",
+        "haltifstate": "off",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 2,
+        "x": 80,
+        "y": 250,
+        "wires": [
+            [
+                "a4b5960.3201568"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "a2152bb0.b61468",
+        "type": "subflow:95f6e73a.bece68",
+        "z": "4ecb38da.992f98",
+        "name": "",
+        "x": 310,
+        "y": 40,
+        "wires": [
+            [
+                "4a10192e.e4bf98"
+            ]
+        ]
+    },
+    {
+        "id": "4a10192e.e4bf98",
+        "type": "api-call-service",
+        "z": "4ecb38da.992f98",
+        "name": "Start Twitch",
+        "server": "82147d23.08b5d",
+        "service_domain": "media_player",
+        "service": "androidtv_intent",
+        "data": "{\"entity_id\":\"media_player.shield\",\"intent\":\"-n tv.twitch.android.app/tv.twitch.android.apps.TVLandingActivity\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "output_location": "payload",
+        "output_location_type": "msg",
+        "x": 530,
+        "y": 40,
+        "wires": [
+            [
+                "4cbe11dd.b789d"
+            ]
+        ]
+    },
+    {
+        "id": "7f4e152f.17592c",
+        "type": "subflow:95f6e73a.bece68",
+        "z": "4ecb38da.992f98",
+        "name": "",
+        "x": 310,
+        "y": 100,
+        "wires": [
+            [
+                "baa4157f.7a6e98"
+            ]
+        ]
+    },
+    {
+        "id": "f7ccc75.3638b38",
+        "type": "subflow:95f6e73a.bece68",
+        "z": "4ecb38da.992f98",
+        "name": "",
+        "x": 310,
+        "y": 150,
+        "wires": [
+            [
+                "c8d15ba7.16c728"
+            ]
+        ]
+    },
+    {
+        "id": "aaa9e1b5.8b58",
+        "type": "subflow:95f6e73a.bece68",
+        "z": "4ecb38da.992f98",
+        "name": "",
+        "x": 310,
+        "y": 200,
+        "wires": [
+            [
+                "1b7f6185.9bac5e"
+            ]
+        ]
+    },
+    {
+        "id": "a4b5960.3201568",
+        "type": "subflow:95f6e73a.bece68",
+        "z": "4ecb38da.992f98",
+        "name": "",
+        "x": 310,
+        "y": 250,
+        "wires": [
+            [
+                "9181da84.cd9108"
+            ]
+        ]
+    },
+    {
+        "id": "c8d15ba7.16c728",
+        "type": "api-call-service",
+        "z": "4ecb38da.992f98",
+        "name": "Start Kodi",
+        "server": "82147d23.08b5d",
+        "service_domain": "media_player",
+        "service": "androidtv_intent",
+        "data": "{\"entity_id\":\"media_player.shield\",\"intent\":\"-n org.xbmc.kodi/.Splash\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "output_location": "payload",
+        "output_location_type": "msg",
+        "x": 520,
+        "y": 150,
+        "wires": [
+            [
+                "2bf274ec.e3815c"
+            ]
+        ]
+    },
+    {
+        "id": "1b7f6185.9bac5e",
+        "type": "api-call-service",
+        "z": "4ecb38da.992f98",
+        "name": "Start Netflix",
+        "server": "82147d23.08b5d",
+        "service_domain": "media_player",
+        "service": "androidtv_intent",
+        "data": "{\"entity_id\":\"media_player.shield\",\"intent\":\"-n com.netflix.ninja/.MainActivity\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "output_location": "payload",
+        "output_location_type": "msg",
+        "x": 530,
+        "y": 200,
+        "wires": [
+            [
+                "5995222.7efb5dc"
+            ]
+        ]
+    },
+    {
+        "id": "9181da84.cd9108",
+        "type": "api-call-service",
+        "z": "4ecb38da.992f98",
+        "name": "Start Tv4play",
+        "server": "82147d23.08b5d",
+        "service_domain": "media_player",
+        "service": "androidtv_intent",
+        "data": "{\"entity_id\":\"media_player.shield\",\"intent\":\"-n se.tv4.tv4playtab/se.tv4.tv4play.startup.SplashActivity\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "output_location": "payload",
+        "output_location_type": "msg",
+        "x": 530,
+        "y": 250,
+        "wires": [
+            [
+                "4079655.d547b9c"
+            ]
+        ]
+    },
+    {
+        "id": "3a484f62.331a2",
+        "type": "subflow:1579a23b.37e49e",
+        "z": "4ecb38da.992f98",
+        "name": "",
+        "x": 220,
+        "y": 350,
+        "wires": []
+    },
+    {
+        "id": "94de727e.9a867",
+        "type": "server-state-changed",
+        "z": "4ecb38da.992f98",
+        "name": "tv trigger",
+        "server": "82147d23.08b5d",
+        "entityidfilter": "input_boolean.tv_trigger",
+        "entityidfiltertype": "substring",
+        "outputinitially": false,
+        "state_type": "str",
+        "haltifstate": "off",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 2,
+        "x": 70,
+        "y": 300,
+        "wires": [
+            [
+                "d9e5c531.f65f08",
+                "3a484f62.331a2"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "ba95a147.11b2c",
+        "type": "server-state-changed",
+        "z": "4ecb38da.992f98",
+        "name": "Sonos Vol Up",
+        "server": "82147d23.08b5d",
+        "entityidfilter": "input_boolean.sonos_vol_up",
+        "entityidfiltertype": "substring",
+        "outputinitially": false,
+        "state_type": "str",
+        "haltifstate": "off",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 2,
+        "x": 80,
+        "y": 401,
+        "wires": [
+            [
+                "6f8dd981.577ef8"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "73c596a2.002528",
+        "type": "server-state-changed",
+        "z": "4ecb38da.992f98",
+        "name": "Sonos Vol Down",
+        "server": "82147d23.08b5d",
+        "entityidfilter": "input_boolean.sonos_vol_down",
+        "entityidfiltertype": "substring",
+        "outputinitially": false,
+        "state_type": "str",
+        "haltifstate": "off",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 2,
+        "x": 90,
+        "y": 460,
+        "wires": [
+            [
+                "892b87d7.9c5d28"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "6f8dd981.577ef8",
+        "type": "api-call-service",
+        "z": "4ecb38da.992f98",
+        "name": "Reset Trigger",
+        "server": "82147d23.08b5d",
+        "service_domain": "input_boolean",
+        "service": "turn_off",
+        "data": "{\"entity_id\":\"input_boolean.sonos_vol_up\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "output_location": "payload",
+        "output_location_type": "msg",
+        "x": 300,
+        "y": 400,
+        "wires": [
+            [
+                "3e061551.ac19aa"
+            ]
+        ]
+    },
+    {
+        "id": "892b87d7.9c5d28",
+        "type": "api-call-service",
+        "z": "4ecb38da.992f98",
+        "name": "Reset Trigger",
+        "server": "82147d23.08b5d",
+        "service_domain": "input_boolean",
+        "service": "turn_off",
+        "data": "{\"entity_id\":\"input_boolean.sonos_vol_down\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "output_location": "payload",
+        "output_location_type": "msg",
+        "x": 300,
+        "y": 460,
+        "wires": [
+            [
+                "4e36fe0b.3d493"
+            ]
+        ]
+    },
+    {
+        "id": "3e061551.ac19aa",
+        "type": "change",
+        "z": "4ecb38da.992f98",
+        "name": "+1",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "+1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 480,
+        "y": 400,
+        "wires": [
+            [
+                "75750ee5.2b5ef",
+                "44a79c04.25b2a4"
+            ]
+        ]
+    },
+    {
+        "id": "75750ee5.2b5ef",
+        "type": "better-sonos-control",
+        "z": "4ecb38da.992f98",
+        "confignode": "15f0eb17.25afd5",
+        "name": "",
+        "mode": "",
+        "track": "",
+        "volume": "",
+        "volume_value": "",
+        "x": 670,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "4e36fe0b.3d493",
+        "type": "change",
+        "z": "4ecb38da.992f98",
+        "name": "-1",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "-1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 480,
+        "y": 460,
+        "wires": [
+            [
+                "75750ee5.2b5ef",
+                "44a79c04.25b2a4"
+            ]
+        ]
+    },
+    {
+        "id": "61d03f52.c58cd",
+        "type": "api-call-service",
+        "z": "4ecb38da.992f98",
+        "name": "Reset Start Youtube",
+        "server": "82147d23.08b5d",
+        "service_domain": "switch",
+        "service": "turn_off",
+        "data": "{\"entity_id\":\"switch.shield_youtube\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "output_location": "payload",
+        "output_location_type": "msg",
+        "x": 890,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ee75b2e9.ff1e7",
+        "type": "api-call-service",
+        "z": "4ecb38da.992f98",
+        "name": "Reset Start Twitch",
+        "server": "82147d23.08b5d",
+        "service_domain": "switch",
+        "service": "turn_off",
+        "data": "{\"entity_id\":\"switch.shield_twitch\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "output_location": "payload",
+        "output_location_type": "msg",
+        "x": 880,
+        "y": 40,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8aadd2d6.639e1",
+        "type": "api-call-service",
+        "z": "4ecb38da.992f98",
+        "name": "Reset Start Kodi",
+        "server": "82147d23.08b5d",
+        "service_domain": "switch",
+        "service": "turn_off",
+        "data": "{\"entity_id\":\"switch.shield_kodi\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "output_location": "payload",
+        "output_location_type": "msg",
+        "x": 870,
+        "y": 150,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d0eedb68.9c2358",
+        "type": "api-call-service",
+        "z": "4ecb38da.992f98",
+        "name": "Reset Start Netflix",
+        "server": "82147d23.08b5d",
+        "service_domain": "switch",
+        "service": "turn_off",
+        "data": "{\"entity_id\":\"switch.shield_netflix\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "output_location": "payload",
+        "output_location_type": "msg",
+        "x": 880,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "cb433922.34f7d8",
+        "type": "api-call-service",
+        "z": "4ecb38da.992f98",
+        "name": "Reset Start Tv4play",
+        "server": "82147d23.08b5d",
+        "service_domain": "switch",
+        "service": "turn_off",
+        "data": "{\"entity_id\":\"switch.shield_tv4play\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "output_location": "payload",
+        "output_location_type": "msg",
+        "x": 880,
+        "y": 250,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2bf274ec.e3815c",
+        "type": "change",
+        "z": "4ecb38da.992f98",
+        "name": "Set ON",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "ON",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 700,
+        "y": 150,
+        "wires": [
+            [
+                "8aadd2d6.639e1"
+            ]
+        ]
+    },
+    {
+        "id": "5995222.7efb5dc",
+        "type": "change",
+        "z": "4ecb38da.992f98",
+        "name": "Set ON",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "ON",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 700,
+        "y": 200,
+        "wires": [
+            [
+                "d0eedb68.9c2358"
+            ]
+        ]
+    },
+    {
+        "id": "4079655.d547b9c",
+        "type": "change",
+        "z": "4ecb38da.992f98",
+        "name": "Set ON",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "ON",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 700,
+        "y": 250,
+        "wires": [
+            [
+                "cb433922.34f7d8"
+            ]
+        ]
+    },
+    {
+        "id": "a63bf54f.a427e8",
+        "type": "change",
+        "z": "4ecb38da.992f98",
+        "name": "Set ON",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "ON",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 700,
+        "y": 100,
+        "wires": [
+            [
+                "61d03f52.c58cd"
+            ]
+        ]
+    },
+    {
+        "id": "4cbe11dd.b789d",
+        "type": "change",
+        "z": "4ecb38da.992f98",
+        "name": "Set ON",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "ON",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 700,
+        "y": 40,
+        "wires": [
+            [
+                "ee75b2e9.ff1e7"
+            ]
+        ]
+    },
+    {
+        "id": "5efdefae.06bec",
+        "type": "api-call-service",
+        "z": "4ecb38da.992f98",
+        "name": "Reset Shield On",
+        "server": "82147d23.08b5d",
+        "service_domain": "switch",
+        "service": "turn_off",
+        "data": "{\"entity_id\":\"switch.shield_on\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "output_location": "payload",
+        "output_location_type": "msg",
+        "x": 480,
+        "y": 670,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9d0387a8.c37698",
+        "type": "trigger-state",
+        "z": "4ecb38da.992f98",
+        "name": "Shield On",
+        "server": "82147d23.08b5d",
+        "entityid": "switch.shield_on",
+        "entityidfiltertype": "exact",
+        "debugenabled": false,
+        "constraints": [],
+        "constraintsmustmatch": "all",
+        "outputs": 2,
+        "customoutputs": [],
+        "outputinitially": false,
+        "state_type": "str",
+        "x": 80,
+        "y": 670,
+        "wires": [
+            [
+                "5874ed37.bd54e4"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "5874ed37.bd54e4",
+        "type": "delay",
+        "z": "4ecb38da.992f98",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "500",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 300,
+        "y": 670,
+        "wires": [
+            [
+                "5efdefae.06bec"
+            ]
+        ]
+    },
+    {
+        "id": "e57cd828.172078",
+        "type": "comment",
+        "z": "4ecb38da.992f98",
+        "name": "Reset Shield Lovelace Buttons",
+        "info": "",
+        "x": 150,
+        "y": 630,
+        "wires": []
+    },
+    {
+        "id": "6d02403e.0135",
+        "type": "api-call-service",
+        "z": "4ecb38da.992f98",
+        "name": "Reset Shield Up",
+        "server": "82147d23.08b5d",
+        "service_domain": "switch",
+        "service": "turn_off",
+        "data": "{\"entity_id\":\"switch.shield_up\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "output_location": "payload",
+        "output_location_type": "msg",
+        "x": 480,
+        "y": 720,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "56e405b3.901b2c",
+        "type": "trigger-state",
+        "z": "4ecb38da.992f98",
+        "name": "Shield Up",
+        "server": "82147d23.08b5d",
+        "entityid": "switch.shield_up",
+        "entityidfiltertype": "exact",
+        "debugenabled": false,
+        "constraints": [],
+        "constraintsmustmatch": "all",
+        "outputs": 2,
+        "customoutputs": [],
+        "outputinitially": false,
+        "state_type": "str",
+        "x": 80,
+        "y": 720,
+        "wires": [
+            [
+                "6ac0e6a2.e2bca8"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "6ac0e6a2.e2bca8",
+        "type": "delay",
+        "z": "4ecb38da.992f98",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "500",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 300,
+        "y": 720,
+        "wires": [
+            [
+                "6d02403e.0135"
+            ]
+        ]
+    },
+    {
+        "id": "7db3a683.b10388",
+        "type": "api-call-service",
+        "z": "4ecb38da.992f98",
+        "name": "Reset Shield Off",
+        "server": "82147d23.08b5d",
+        "service_domain": "switch",
+        "service": "turn_off",
+        "data": "{\"entity_id\":\"switch.shield_off\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "output_location": "payload",
+        "output_location_type": "msg",
+        "x": 480,
+        "y": 770,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e1c57bed.8a9b58",
+        "type": "trigger-state",
+        "z": "4ecb38da.992f98",
+        "name": "Shield Off",
+        "server": "82147d23.08b5d",
+        "entityid": "switch.shield_off",
+        "entityidfiltertype": "exact",
+        "debugenabled": false,
+        "constraints": [],
+        "constraintsmustmatch": "all",
+        "outputs": 2,
+        "customoutputs": [],
+        "outputinitially": false,
+        "state_type": "str",
+        "x": 80,
+        "y": 770,
+        "wires": [
+            [
+                "c39c0cc0.11a39"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "c39c0cc0.11a39",
+        "type": "delay",
+        "z": "4ecb38da.992f98",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "500",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 300,
+        "y": 770,
+        "wires": [
+            [
+                "7db3a683.b10388"
+            ]
+        ]
+    },
+    {
+        "id": "cf491bda.51b208",
+        "type": "api-call-service",
+        "z": "4ecb38da.992f98",
+        "name": "Reset Shield Left",
+        "server": "82147d23.08b5d",
+        "service_domain": "switch",
+        "service": "turn_off",
+        "data": "{\"entity_id\":\"switch.shield_left\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "output_location": "payload",
+        "output_location_type": "msg",
+        "x": 490,
+        "y": 820,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "99f25f2a.b4a9c",
+        "type": "trigger-state",
+        "z": "4ecb38da.992f98",
+        "name": "Shield Left",
+        "server": "82147d23.08b5d",
+        "entityid": "switch.shield_left",
+        "entityidfiltertype": "exact",
+        "debugenabled": false,
+        "constraints": [],
+        "constraintsmustmatch": "all",
+        "outputs": 2,
+        "customoutputs": [],
+        "outputinitially": false,
+        "state_type": "str",
+        "x": 90,
+        "y": 820,
+        "wires": [
+            [
+                "d47db505.b93758"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "d47db505.b93758",
+        "type": "delay",
+        "z": "4ecb38da.992f98",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "500",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 300,
+        "y": 820,
+        "wires": [
+            [
+                "cf491bda.51b208"
+            ]
+        ]
+    },
+    {
+        "id": "986bd9ac.2fbf08",
+        "type": "api-call-service",
+        "z": "4ecb38da.992f98",
+        "name": "Reset Shield Enter",
+        "server": "82147d23.08b5d",
+        "service_domain": "switch",
+        "service": "turn_off",
+        "data": "{\"entity_id\":\"switch.shield_enter\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "output_location": "payload",
+        "output_location_type": "msg",
+        "x": 490,
+        "y": 870,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "43f9e91.4f68818",
+        "type": "trigger-state",
+        "z": "4ecb38da.992f98",
+        "name": "Shield Enter",
+        "server": "82147d23.08b5d",
+        "entityid": "switch.shield_enter",
+        "entityidfiltertype": "exact",
+        "debugenabled": false,
+        "constraints": [],
+        "constraintsmustmatch": "all",
+        "outputs": 2,
+        "customoutputs": [],
+        "outputinitially": false,
+        "state_type": "str",
+        "x": 90,
+        "y": 870,
+        "wires": [
+            [
+                "5de93f84.1c83e"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "5de93f84.1c83e",
+        "type": "delay",
+        "z": "4ecb38da.992f98",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "500",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 300,
+        "y": 870,
+        "wires": [
+            [
+                "986bd9ac.2fbf08"
+            ]
+        ]
+    },
+    {
+        "id": "f4a5b35a.f1d7b",
+        "type": "api-call-service",
+        "z": "4ecb38da.992f98",
+        "name": "Reset Shield Right",
+        "server": "82147d23.08b5d",
+        "service_domain": "switch",
+        "service": "turn_off",
+        "data": "{\"entity_id\":\"switch.shield_right\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "output_location": "payload",
+        "output_location_type": "msg",
+        "x": 490,
+        "y": 920,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f5a976b9.d5b478",
+        "type": "trigger-state",
+        "z": "4ecb38da.992f98",
+        "name": "Shield Right",
+        "server": "82147d23.08b5d",
+        "entityid": "switch.shield_right",
+        "entityidfiltertype": "exact",
+        "debugenabled": false,
+        "constraints": [],
+        "constraintsmustmatch": "all",
+        "outputs": 2,
+        "customoutputs": [],
+        "outputinitially": false,
+        "state_type": "str",
+        "x": 90,
+        "y": 920,
+        "wires": [
+            [
+                "e5482dc8.a488f"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "e5482dc8.a488f",
+        "type": "delay",
+        "z": "4ecb38da.992f98",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "500",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 300,
+        "y": 920,
+        "wires": [
+            [
+                "f4a5b35a.f1d7b"
+            ]
+        ]
+    },
+    {
+        "id": "72c91ec4.ddd2d",
+        "type": "api-call-service",
+        "z": "4ecb38da.992f98",
+        "name": "Reset Shield Back",
+        "server": "82147d23.08b5d",
+        "service_domain": "switch",
+        "service": "turn_off",
+        "data": "{\"entity_id\":\"switch.shield_back\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "output_location": "payload",
+        "output_location_type": "msg",
+        "x": 490,
+        "y": 970,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "bf618a52.028378",
+        "type": "trigger-state",
+        "z": "4ecb38da.992f98",
+        "name": "Shield Back",
+        "server": "82147d23.08b5d",
+        "entityid": "switch.shield_back",
+        "entityidfiltertype": "exact",
+        "debugenabled": false,
+        "constraints": [],
+        "constraintsmustmatch": "all",
+        "outputs": 2,
+        "customoutputs": [],
+        "outputinitially": false,
+        "state_type": "str",
+        "x": 90,
+        "y": 970,
+        "wires": [
+            [
+                "275627d6.d65548"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "275627d6.d65548",
+        "type": "delay",
+        "z": "4ecb38da.992f98",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "500",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 300,
+        "y": 970,
+        "wires": [
+            [
+                "72c91ec4.ddd2d"
+            ]
+        ]
+    },
+    {
+        "id": "7028a7d0.ce63d8",
+        "type": "api-call-service",
+        "z": "4ecb38da.992f98",
+        "name": "Reset Shield Down",
+        "server": "82147d23.08b5d",
+        "service_domain": "switch",
+        "service": "turn_off",
+        "data": "{\"entity_id\":\"switch.shield_down\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "output_location": "payload",
+        "output_location_type": "msg",
+        "x": 490,
+        "y": 1020,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d45d8506.71ffb8",
+        "type": "trigger-state",
+        "z": "4ecb38da.992f98",
+        "name": "Shield Down",
+        "server": "82147d23.08b5d",
+        "entityid": "switch.shield_down",
+        "entityidfiltertype": "exact",
+        "debugenabled": false,
+        "constraints": [],
+        "constraintsmustmatch": "all",
+        "outputs": 2,
+        "customoutputs": [],
+        "outputinitially": false,
+        "state_type": "str",
+        "x": 90,
+        "y": 1020,
+        "wires": [
+            [
+                "e85d7045.24767"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "e85d7045.24767",
+        "type": "delay",
+        "z": "4ecb38da.992f98",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "500",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 300,
+        "y": 1020,
+        "wires": [
+            [
+                "7028a7d0.ce63d8"
+            ]
+        ]
+    },
+    {
+        "id": "69fe122b.10433c",
+        "type": "api-call-service",
+        "z": "4ecb38da.992f98",
+        "name": "Reset Shield Home",
+        "server": "82147d23.08b5d",
+        "service_domain": "switch",
+        "service": "turn_off",
+        "data": "{\"entity_id\":\"switch.shield_home\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "output_location": "payload",
+        "output_location_type": "msg",
+        "x": 490,
+        "y": 1070,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "cc88409a.8a3c3",
+        "type": "trigger-state",
+        "z": "4ecb38da.992f98",
+        "name": "Shield Home",
+        "server": "82147d23.08b5d",
+        "entityid": "switch.shield_home",
+        "entityidfiltertype": "exact",
+        "debugenabled": false,
+        "constraints": [],
+        "constraintsmustmatch": "all",
+        "outputs": 2,
+        "customoutputs": [],
+        "outputinitially": false,
+        "state_type": "str",
+        "x": 90,
+        "y": 1070,
+        "wires": [
+            [
+                "f88684bb.e88278"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "f88684bb.e88278",
+        "type": "delay",
+        "z": "4ecb38da.992f98",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "500",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 300,
+        "y": 1070,
+        "wires": [
+            [
+                "69fe122b.10433c"
+            ]
+        ]
+    },
+    {
+        "id": "3270ee0d.c9ef32",
+        "type": "api-call-service",
+        "z": "4ecb38da.992f98",
+        "name": "Reset Shield Play",
+        "server": "82147d23.08b5d",
+        "service_domain": "switch",
+        "service": "turn_off",
+        "data": "{\"entity_id\":\"switch.shield_play\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "output_location": "payload",
+        "output_location_type": "msg",
+        "x": 490,
+        "y": 1120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "915996b7.cdd948",
+        "type": "trigger-state",
+        "z": "4ecb38da.992f98",
+        "name": "Shield Play",
+        "server": "82147d23.08b5d",
+        "entityid": "switch.shield_play",
+        "entityidfiltertype": "exact",
+        "debugenabled": false,
+        "constraints": [],
+        "constraintsmustmatch": "all",
+        "outputs": 2,
+        "customoutputs": [],
+        "outputinitially": false,
+        "state_type": "str",
+        "x": 90,
+        "y": 1120,
+        "wires": [
+            [
+                "90343066.a9fea"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "90343066.a9fea",
+        "type": "delay",
+        "z": "4ecb38da.992f98",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "500",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 300,
+        "y": 1120,
+        "wires": [
+            [
+                "3270ee0d.c9ef32"
+            ]
+        ]
+    },
+    {
+        "id": "5cf730bb.d836c",
+        "type": "api-call-service",
+        "z": "4ecb38da.992f98",
+        "name": "Reset Shield Play/Pause",
+        "server": "82147d23.08b5d",
+        "service_domain": "switch",
+        "service": "turn_off",
+        "data": "{\"entity_id\":\"switch.shield_play_pause\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "output_location": "payload",
+        "output_location_type": "msg",
+        "x": 510,
+        "y": 1170,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "286ae5ca.2a9bda",
+        "type": "trigger-state",
+        "z": "4ecb38da.992f98",
+        "name": "Shield Play/Pause",
+        "server": "82147d23.08b5d",
+        "entityid": "switch.shield_play_pause",
+        "entityidfiltertype": "exact",
+        "debugenabled": false,
+        "constraints": [],
+        "constraintsmustmatch": "all",
+        "outputs": 2,
+        "customoutputs": [],
+        "outputinitially": false,
+        "state_type": "str",
+        "x": 110,
+        "y": 1170,
+        "wires": [
+            [
+                "af022bb7.9086d8"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "af022bb7.9086d8",
+        "type": "delay",
+        "z": "4ecb38da.992f98",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "500",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 300,
+        "y": 1170,
+        "wires": [
+            [
+                "5cf730bb.d836c"
+            ]
+        ]
+    },
+    {
+        "id": "3b70f.d67218f12",
+        "type": "api-call-service",
+        "z": "4ecb38da.992f98",
+        "name": "Reset Shield Stop",
+        "server": "82147d23.08b5d",
+        "service_domain": "switch",
+        "service": "turn_off",
+        "data": "{\"entity_id\":\"switch.shield_stop\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "output_location": "payload",
+        "output_location_type": "msg",
+        "x": 490,
+        "y": 1220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "55bf4df6.274e44",
+        "type": "trigger-state",
+        "z": "4ecb38da.992f98",
+        "name": "Shield Stop",
+        "server": "82147d23.08b5d",
+        "entityid": "switch.shield_stop",
+        "entityidfiltertype": "exact",
+        "debugenabled": false,
+        "constraints": [],
+        "constraintsmustmatch": "all",
+        "outputs": 2,
+        "customoutputs": [],
+        "outputinitially": false,
+        "state_type": "str",
+        "x": 90,
+        "y": 1220,
+        "wires": [
+            [
+                "968d8986.cc25d8"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "968d8986.cc25d8",
+        "type": "delay",
+        "z": "4ecb38da.992f98",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "500",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 300,
+        "y": 1220,
+        "wires": [
+            [
+                "3b70f.d67218f12"
+            ]
+        ]
+    },
+    {
+        "id": "2fffe5ae.b835aa",
+        "type": "api-call-service",
+        "z": "4ecb38da.992f98",
+        "name": "Reset Youtube Trigger",
+        "server": "82147d23.08b5d",
+        "service_domain": "input_boolean",
+        "service": "turn_off",
+        "data": "{\"entity_id\":\"input_boolean.youtube_trigger\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "output_location": "payload",
+        "output_location_type": "msg",
+        "x": 530,
+        "y": 1290,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5cd85e6d.5b97d",
+        "type": "trigger-state",
+        "z": "4ecb38da.992f98",
+        "name": "Shield Youtube Trigger",
+        "server": "82147d23.08b5d",
+        "entityid": "input_boolean.youtube_trigger",
+        "entityidfiltertype": "exact",
+        "debugenabled": false,
+        "constraints": [],
+        "constraintsmustmatch": "all",
+        "outputs": 2,
+        "customoutputs": [],
+        "outputinitially": false,
+        "state_type": "str",
+        "x": 120,
+        "y": 1290,
+        "wires": [
+            [
+                "6b967a31.f85a64"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "6b967a31.f85a64",
+        "type": "delay",
+        "z": "4ecb38da.992f98",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 320,
+        "y": 1290,
+        "wires": [
+            [
+                "2fffe5ae.b835aa"
+            ]
+        ]
+    },
+    {
+        "id": "57e948c1.f704f8",
+        "type": "api-call-service",
+        "z": "4ecb38da.992f98",
+        "name": "Reset Kodi Trigger",
+        "server": "82147d23.08b5d",
+        "service_domain": "input_boolean",
+        "service": "turn_off",
+        "data": "{\"entity_id\":\"input_boolean.kodi_trigger\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "output_location": "payload",
+        "output_location_type": "msg",
+        "x": 520,
+        "y": 1340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3fbabc08.4b66f4",
+        "type": "trigger-state",
+        "z": "4ecb38da.992f98",
+        "name": "Shield Kodi Trigger",
+        "server": "82147d23.08b5d",
+        "entityid": "input_boolean.kodi_trigger",
+        "entityidfiltertype": "exact",
+        "debugenabled": false,
+        "constraints": [],
+        "constraintsmustmatch": "all",
+        "outputs": 2,
+        "customoutputs": [],
+        "outputinitially": false,
+        "state_type": "str",
+        "x": 110,
+        "y": 1340,
+        "wires": [
+            [
+                "3f7e48af.1b9248"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "3f7e48af.1b9248",
+        "type": "delay",
+        "z": "4ecb38da.992f98",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 320,
+        "y": 1340,
+        "wires": [
+            [
+                "57e948c1.f704f8"
+            ]
+        ]
+    },
+    {
+        "id": "2f0e9460.65b29c",
+        "type": "api-call-service",
+        "z": "4ecb38da.992f98",
+        "name": "Reset Twitch Trigger",
+        "server": "82147d23.08b5d",
+        "service_domain": "input_boolean",
+        "service": "turn_off",
+        "data": "{\"entity_id\":\"input_boolean.twitch_trigger\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "output_location": "payload",
+        "output_location_type": "msg",
+        "x": 530,
+        "y": 1390,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "12c09e06.4dd4e2",
+        "type": "trigger-state",
+        "z": "4ecb38da.992f98",
+        "name": "Shield Twitch Trigger",
+        "server": "82147d23.08b5d",
+        "entityid": "input_boolean.twitch_trigger",
+        "entityidfiltertype": "exact",
+        "debugenabled": false,
+        "constraints": [],
+        "constraintsmustmatch": "all",
+        "outputs": 2,
+        "customoutputs": [],
+        "outputinitially": false,
+        "state_type": "str",
+        "x": 120,
+        "y": 1390,
+        "wires": [
+            [
+                "86890377.07a69"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "86890377.07a69",
+        "type": "delay",
+        "z": "4ecb38da.992f98",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 320,
+        "y": 1390,
+        "wires": [
+            [
+                "2f0e9460.65b29c"
+            ]
+        ]
+    },
+    {
+        "id": "24f03fb5.f1119",
+        "type": "api-call-service",
+        "z": "4ecb38da.992f98",
+        "name": "Reset Netflix Trigger",
+        "server": "82147d23.08b5d",
+        "service_domain": "input_boolean",
+        "service": "turn_off",
+        "data": "{\"entity_id\":\"input_boolean.netflix_trigger\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "output_location": "payload",
+        "output_location_type": "msg",
+        "x": 530,
+        "y": 1440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "eb671c06.227ac",
+        "type": "trigger-state",
+        "z": "4ecb38da.992f98",
+        "name": "Shield Netflix Trigger",
+        "server": "82147d23.08b5d",
+        "entityid": "input_boolean.netflix_trigger",
+        "entityidfiltertype": "exact",
+        "debugenabled": false,
+        "constraints": [],
+        "constraintsmustmatch": "all",
+        "outputs": 2,
+        "customoutputs": [],
+        "outputinitially": false,
+        "state_type": "str",
+        "x": 120,
+        "y": 1440,
+        "wires": [
+            [
+                "6c374747.d3ceb8"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "6c374747.d3ceb8",
+        "type": "delay",
+        "z": "4ecb38da.992f98",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 320,
+        "y": 1440,
+        "wires": [
+            [
+                "24f03fb5.f1119"
+            ]
+        ]
+    },
+    {
+        "id": "3a6b7f7b.3c639",
+        "type": "api-call-service",
+        "z": "4ecb38da.992f98",
+        "name": "Reset TV4Play Trigger",
+        "server": "82147d23.08b5d",
+        "service_domain": "input_boolean",
+        "service": "turn_off",
+        "data": "{\"entity_id\":\"input_boolean.tv4play_trigger\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "output_location": "payload",
+        "output_location_type": "msg",
+        "x": 530,
+        "y": 1490,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "dd17df16.ba803",
+        "type": "trigger-state",
+        "z": "4ecb38da.992f98",
+        "name": "Shield TV4Play Trigger",
+        "server": "82147d23.08b5d",
+        "entityid": "input_boolean.tv4play_trigger",
+        "entityidfiltertype": "exact",
+        "debugenabled": false,
+        "constraints": [],
+        "constraintsmustmatch": "all",
+        "outputs": 2,
+        "customoutputs": [],
+        "outputinitially": false,
+        "state_type": "str",
+        "x": 120,
+        "y": 1490,
+        "wires": [
+            [
+                "9cdd3af7.a6f4e8"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "9cdd3af7.a6f4e8",
+        "type": "delay",
+        "z": "4ecb38da.992f98",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 320,
+        "y": 1490,
+        "wires": [
+            [
+                "3a6b7f7b.3c639"
+            ]
+        ]
+    },
+    {
+        "id": "431575ba.4cc55c",
+        "type": "api-call-service",
+        "z": "4ecb38da.992f98",
+        "name": "Reset Trigger Tv",
+        "server": "82147d23.08b5d",
+        "service_domain": "input_boolean",
+        "service": "turn_off",
+        "data": "{\"entity_id\":\"input_boolean.tv_trigger\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "output_location": "payload",
+        "output_location_type": "msg",
+        "x": 390,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d9e5c531.f65f08",
+        "type": "delay",
+        "z": "4ecb38da.992f98",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 220,
+        "y": 300,
+        "wires": [
+            [
+                "431575ba.4cc55c"
+            ]
+        ]
+    },
+    {
+        "id": "b7cc56b8.ad5fc8",
+        "type": "server-state-changed",
+        "z": "4ecb38da.992f98",
+        "name": "Sonos Vol Mute",
+        "server": "82147d23.08b5d",
+        "entityidfilter": "input_boolean.sonos_vol_mute",
+        "entityidfiltertype": "substring",
+        "outputinitially": false,
+        "state_type": "str",
+        "haltifstate": "off",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 2,
+        "x": 90,
+        "y": 520,
+        "wires": [
+            [
+                "8c61419f.cd068"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "8c61419f.cd068",
+        "type": "api-call-service",
+        "z": "4ecb38da.992f98",
+        "name": "Reset Trigger",
+        "server": "82147d23.08b5d",
+        "service_domain": "input_boolean",
+        "service": "turn_off",
+        "data": "{\"entity_id\":\"input_boolean.sonos_vol_mute\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "output_location": "payload",
+        "output_location_type": "msg",
+        "x": 300,
+        "y": 520,
+        "wires": [
+            [
+                "be674e1a.b7c62"
+            ]
+        ]
+    },
+    {
+        "id": "be674e1a.b7c62",
+        "type": "change",
+        "z": "4ecb38da.992f98",
+        "name": "0",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "0",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 480,
+        "y": 520,
+        "wires": [
+            [
+                "75750ee5.2b5ef",
+                "44a79c04.25b2a4"
+            ]
+        ]
+    },
+    {
+        "id": "8c818824.504958",
+        "type": "function",
+        "z": "4ecb38da.992f98",
+        "name": "Push to Shield",
+        "func": "msg.title = \"SONOS\"\nmsg.text = \"Volym \" + msg.payload\nmsg.icon = \"https://raw.githubusercontent.com/google/material-design-icons/224895a86501195e7a7ff3dde18e39f00b8e3d5a/av/ios/ic_volume_up_white_48pt.imageset/ic_volume_up_white_48pt_3x.png\"\nmsg.devices = \"SHIELD Android TV\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 790,
+        "y": 500,
+        "wires": [
+            [
+                "653706af.1fd458"
+            ]
+        ]
+    },
+    {
+        "id": "653706af.1fd458",
+        "type": "join-message",
+        "z": "4ecb38da.992f98",
+        "name": "Join",
+        "text": "",
+        "title": "",
+        "url": "",
+        "notificationicon": "",
+        "joinConfig": "1d1b8518.7781cb",
+        "x": 940,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "44a79c04.25b2a4",
+        "type": "api-current-state",
+        "z": "4ecb38da.992f98",
+        "name": "Volym",
+        "server": "82147d23.08b5d",
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "override_topic": true,
+        "entity_id": "sensor.sonos_volume_level",
+        "state_type": "str",
+        "override_payload": true,
+        "override_data": true,
+        "x": 640,
+        "y": 500,
+        "wires": [
+            [
+                "8c818824.504958"
+            ]
+        ]
+    },
+    {
+        "id": "baa4157f.7a6e98",
+        "type": "api-call-service",
+        "z": "4ecb38da.992f98",
+        "name": "Start Youtube",
+        "server": "82147d23.08b5d",
+        "service_domain": "media_player",
+        "service": "androidtv_intent",
+        "data": "{\"entity_id\":\"media_player.shield\",\"intent\":\"-n com.google.android.youtube.tv/com.google.android.apps.youtube.tv.activity.ShellActivity\"}",
+        "render_data": false,
+        "mergecontext": "",
+        "output_location": "payload",
+        "output_location_type": "msg",
+        "x": 540,
+        "y": 100,
+        "wires": [
+            [
+                "a63bf54f.a427e8"
+            ]
+        ]
+    },
+    {
+        "id": "82147d23.08b5d",
+        "type": "server",
+        "z": "",
+        "name": "Home Assistant (90)",
+        "legacy": false,
+        "hassio": true,
+        "rejectUnauthorizedCerts": true
+    },
+    {
+        "id": "1d1b8518.7781cb",
+        "type": "join-config",
+        "z": "",
+        "name": ""
+    }
+]
