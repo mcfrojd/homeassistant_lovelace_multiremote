@@ -1,4 +1,6 @@
 # McFrojd's Home Assistant Lovelace Multiremote
 Lovelace example of my multi remote.
 
-<img src="https://i.imgur.com/5SgDoxr.gif" alt="Multiremote" width="500">
+<p align="center">
+<img src="https://raw.githubusercontent.com/mcfrojd/homeassistant_lovelace_multiremote/master/home_assistant_lovelace_remotes.gif" alt="Multiremote" width="500">
+</p>
