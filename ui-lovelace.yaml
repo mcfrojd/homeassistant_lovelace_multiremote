@@ -1,0 +1,16 @@
+title: Home Control Panel
+resources:
+  - url: /local/button-card.js?v=0.0.5
+    type: module
+  - url: /local/card-tools.js?v=97d985
+    type: js
+  - url: /local/card-modder.js?v=f3d96f
+    type: js
+  - url: /local/compact-custom-header.js?v=1.0.0b4
+    type: module
+  - url: /local/state-switch.js?v=f06d3d
+    type: js
+  
+views:
+  - !include remote.yaml
+  
