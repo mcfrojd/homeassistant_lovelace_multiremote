@@ -38,6 +38,9 @@ Lovelace example of my multi remote.
 
 ### Useful Forum Links:
 
-  - 
-  - 
-  - 
+  - https://community.home-assistant.io/t/community-hass-io-add-on-adb-android-debug-bridge/96375
+  - https://community.home-assistant.io/t/community-hass-io-add-on-node-red/55023
+  - https://community.home-assistant.io/t/compact-custom-header-custom-user-device-views/83716
+  - https://community.home-assistant.io/t/control-tivo-box-over-telnet/12430
+  - https://community.home-assistant.io/t/my-lovelace-plugins/70726
+  - https://community.home-assistant.io/t/native-support-for-android-tv-android-devices/82792
