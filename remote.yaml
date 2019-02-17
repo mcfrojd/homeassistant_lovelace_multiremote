@@ -114,7 +114,6 @@ cards:
                       hold_action: none
                       style: {color: white, left: 87%, top: 25%}
                 style:
-                  overflow: hidden
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
                   border: solid 3px rgba(40,40,40,1)
@@ -128,7 +127,6 @@ cards:
                   type: picture
                   image: /local/lovelace/remote/tivo_sonos_logo.png
                 style:
-                  overflow: hidden
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
                   border: solid 3px rgba(80,120,140,1)
@@ -137,7 +135,6 @@ cards:
                   type: picture
                   image: /local/lovelace/remote/tivo_comhem_logo.png
                 style:
-                  overflow: hidden
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
                   border: solid 3px rgba(40,40,40,1)
@@ -154,7 +151,6 @@ cards:
                     service_data:
                       entity_id: switch.tivo_up
                 style:
-                  overflow: hidden
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
                   border: solid 3px rgba(40,40,40,1)
@@ -169,7 +165,6 @@ cards:
                     action: call-service
                     service: script.tv_power
                 style:
-                  overflow: hidden
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
                   border: solid 3px rgba(40,40,40,1)
@@ -207,7 +202,6 @@ cards:
                     service_data:
                       entity_id: switch.tivo_left
                 style:
-                  overflow: hidden
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
                   border: solid 3px rgba(40,40,40,1)
@@ -224,7 +218,6 @@ cards:
                     service_data:
                       entity_id: switch.tivo_select
                 style:
-                  overflow: hidden
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
                   border: solid 3px rgba(40,40,40,1)
@@ -241,7 +234,6 @@ cards:
                     service_data:
                       entity_id: switch.tivo_right
                 style:
-                  overflow: hidden
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
                   border: solid 3px rgba(40,40,40,1)
@@ -279,7 +271,6 @@ cards:
                     service_data:
                       entity_id: switch.tivo_channel_down
                 style:
-                  overflow: hidden
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
                   border: solid 3px rgba(40,40,40,1)
@@ -296,7 +287,6 @@ cards:
                     service_data:
                       entity_id: switch.tivo_down
                 style:
-                  overflow: hidden
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
                   border: solid 3px rgba(40,40,40,1)
@@ -313,7 +303,6 @@ cards:
                     service_data:
                       entity_id: switch.tivo_channel_up
                 style:
-                  overflow: hidden
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
                   border: solid 3px rgba(40,40,40,1)
@@ -351,7 +340,6 @@ cards:
                     service_data:
                       entity_id: switch.tivo_tivo
                 style:
-                  overflow: hidden
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
                   border: solid 3px rgba(40,40,40,1)
@@ -368,7 +356,6 @@ cards:
                     service_data:
                       entity_id: switch.tivo_epg
                 style:
-                  overflow: hidden
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
                   border: solid 3px rgba(40,40,40,1)
@@ -385,7 +372,6 @@ cards:
                     service_data:
                       entity_id: switch.tivo_live_tv
                 style:
-                  overflow: hidden
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
                   border: solid 3px rgba(40,40,40,1)
@@ -405,7 +391,6 @@ cards:
                     action: call-service
                     service: script.tv_hdmi1
                 style:
-                  overflow: hidden
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
                   border: solid 3px rgba(40,40,40,1)
@@ -420,7 +405,6 @@ cards:
                     action: call-service
                     service: script.tv_hdmi2
                 style:
-                  overflow: hidden
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
                   border: solid 3px rgba(40,40,40,1)
@@ -437,7 +421,6 @@ cards:
                     service_data:
                       entity_id: input_boolean.tv_trigger
                 style:
-                  overflow: hidden
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
                   border: solid 3px rgba(40,40,40,1)
@@ -452,7 +435,6 @@ cards:
                     action: call-service
                     service: script.tv_hdmi4
                 style:
-                  overflow: hidden
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
                   border: solid 3px rgba(40,40,40,1)
@@ -470,7 +452,6 @@ cards:
                   type: picture
                   image: /local/lovelace/remote/shield_logo.png
                 style:
-                  overflow: hidden
                   padding: 10px 10px 10px 10px
                   border-radius: 20px
                   background-color: rgba(56,60,69,1)
@@ -822,7 +803,6 @@ cards:
                     service_data:
                       entity_id: switch.tivo_svt1
                 style:
-                  overflow: hidden
                   padding: 5px 5px 5px 5px
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
@@ -839,7 +819,6 @@ cards:
                     service_data:
                       entity_id: switch.tivo_svt2
                 style:
-                  overflow: hidden
                   padding: 5px 5px 5px 5px
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
@@ -856,7 +835,6 @@ cards:
                     service_data:
                       entity_id: switch.tivo_tv3
                 style:
-                  overflow: hidden
                   padding: 5px 5px 5px 5px
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
@@ -878,7 +856,6 @@ cards:
                     service_data:
                       entity_id: switch.tivo_tv4
                 style:
-                  overflow: hidden
                   padding: 5px 5px 5px 5px
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
@@ -895,7 +872,6 @@ cards:
                     service_data:
                       entity_id: switch.tivo_kanal5
                 style:
-                  overflow: hidden
                   padding: 5px 5px 5px 5px
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
@@ -912,7 +888,6 @@ cards:
                     service_data:
                       entity_id: switch.tivo_tv6
                 style:
-                  overflow: hidden
                   padding: 5px 5px 5px 5px
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
@@ -934,7 +909,6 @@ cards:
                     service_data:
                       entity_id: switch.tivo_tv7
                 style:
-                  overflow: hidden
                   padding: 5px 5px 5px 5px
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
@@ -951,7 +925,6 @@ cards:
                     service_data:
                       entity_id: switch.tivo_tv8
                 style:
-                  overflow: hidden
                   padding: 5px 5px 5px 5px
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
@@ -968,7 +941,6 @@ cards:
                     service_data:
                       entity_id: switch.tivo_tv9
                 style:
-                  overflow: hidden
                   padding: 5px 5px 5px 5px
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
@@ -990,7 +962,6 @@ cards:
                     service_data:
                       entity_id: switch.tivo_tv10
                 style:
-                  overflow: hidden
                   padding: 5px 5px 5px 5px
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
@@ -1007,7 +978,6 @@ cards:
                     service_data:
                       entity_id: switch.tivo_tv11
                 style:
-                  overflow: hidden
                   padding: 5px 5px 5px 5px
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
@@ -1024,7 +994,6 @@ cards:
                     service_data:
                       entity_id: switch.tivo_tv12
                 style:
-                  overflow: hidden
                   padding: 5px 5px 5px 5px
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
@@ -1046,7 +1015,6 @@ cards:
                     service_data:
                       entity_id: switch.tivo_mtvrock
                 style:
-                  overflow: hidden
                   padding: 5px 5px 5px 5px
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
@@ -1063,7 +1031,6 @@ cards:
                     service_data:
                       entity_id: switch.tivo_mtvlive
                 style:
-                  overflow: hidden
                   padding: 5px 5px 5px 5px
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
@@ -1080,7 +1047,6 @@ cards:
                     service_data:
                       entity_id: switch.tivo_vh1
                 style:
-                  overflow: hidden
                   padding: 5px 5px 5px 5px
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
@@ -1107,7 +1073,7 @@ cards:
                       entity_id: media_player.sonos_living_room
                       source: Mix Megapol Stockholm
                 style:
-                  overflow: hidden
+                  padding: 5px 5px 5px 5px
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
                   border: solid 3px rgba(225,225,40,1)
@@ -1124,7 +1090,7 @@ cards:
                       entity_id: media_player.sonos_living_room
                       source: RIX FM
                 style:
-                  overflow: hidden
+                  padding: 5px 5px 5px 5px
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
                   border: solid 3px rgba(225,225,40,1)
@@ -1141,7 +1107,7 @@ cards:
                       entity_id: media_player.sonos_living_room
                       source: Vinyl FM
                 style:
-                  overflow: hidden
+                  padding: 5px 5px 5px 5px
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
                   border: solid 3px rgba(225,225,40,1)
@@ -1163,7 +1129,7 @@ cards:
                       entity_id: media_player.sonos_living_room
                       source: BANDIT ROCK
                 style:
-                  overflow: hidden
+                  padding: 5px 5px 5px 5px
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
                   border: solid 3px rgba(225,225,40,1)
@@ -1180,7 +1146,7 @@ cards:
                       entity_id: media_player.sonos_living_room
                       source: Rockklassiker
                 style:
-                  overflow: hidden
+                  padding: 5px 5px 5px 5px
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
                   border: solid 3px rgba(225,225,40,1)
@@ -1197,7 +1163,7 @@ cards:
                       entity_id: media_player.sonos_living_room
                       source: NRJ
                 style:
-                  overflow: hidden
+                  padding: 5px 5px 5px 5px
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
                   border: solid 3px rgba(225,225,40,1)
@@ -1220,6 +1186,7 @@ cards:
                     service_data:
                       entity_id: input_boolean.sonos_vol_up
                 style:
+                  padding: 5px 5px 5px 5px
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
                   border: solid 3px rgba(80,120,140,1)
@@ -1237,6 +1204,7 @@ cards:
                     service_data:
                       entity_id: input_boolean.sonos_vol_down
                 style:
+                  padding: 5px 5px 5px 5px
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
                   border: solid 3px rgba(80,120,140,1)
@@ -1254,6 +1222,7 @@ cards:
                     service_data:
                       entity_id: input_boolean.sonos_vol_mute
                 style:
+                  padding: 5px 5px 5px 5px
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
                   border: solid 3px rgba(80,120,140,1)
@@ -1272,6 +1241,7 @@ cards:
                       entity_id: media_player.sonos_living_room
                       source: TV
                 style:
+                  padding: 5px 5px 5px 5px
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
                   border: solid 3px rgba(80,120,140,1)
