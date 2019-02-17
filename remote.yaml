@@ -103,13 +103,13 @@ cards:
                   elements:
                     - type: state-label
                       entity: sensor.sonos_volume_level
-                      prefix: 'Volym - '
+                      prefix: 'Volume - '
                       tap_action: none
                       hold_action: none
                       style: {color: white, left: 14%, top: 25%}
                     - type: state-label
                       entity: sensor.kanal
-                      prefix: 'Kanal - '
+                      prefix: 'Channel - '
                       tap_action: none
                       hold_action: none
                       style: {color: white, left: 87%, top: 25%}
@@ -145,7 +145,7 @@ cards:
                 card:
                   type: entity-button
                   icon: mdi:arrow-up-bold
-                  name: UPP
+                  name: UP
                   entity: switch.tivo_up
                   hold_action: none
                   tap_action:
@@ -182,7 +182,7 @@ cards:
                 card:
                   type: entity-button
                   icon: mdi:volume-plus
-                  name: VOLYM
+                  name: VOLUME
                   entity: input_boolean.sonos_vol_up
                   hold_action: none
                   tap_action:
@@ -198,7 +198,7 @@ cards:
                 card:
                   type: entity-button
                   icon: mdi:arrow-left-bold
-                  name: VÄNSTER
+                  name: LEFT
                   entity: switch.tivo_left
                   hold_action: none
                   tap_action:
@@ -232,7 +232,7 @@ cards:
                 card:
                   type: entity-button
                   icon: mdi:arrow-right-bold
-                  name: HÖGER
+                  name: RIGHT
                   entity: switch.tivo_right
                   hold_action: none
                   tap_action:
@@ -270,7 +270,7 @@ cards:
                 card:
                   type: entity-button
                   icon: mdi:minus
-                  name: Kanal
+                  name: CHANNEL
                   entity: switch.tivo_channel_down
                   hold_action: none
                   tap_action:
@@ -287,7 +287,7 @@ cards:
                 card:
                   type: entity-button
                   icon: mdi:arrow-down-bold
-                  name: NER
+                  name: DOWN
                   entity: switch.tivo_down
                   hold_action: none
                   tap_action:
@@ -304,7 +304,7 @@ cards:
                 card:
                   type: entity-button
                   icon: mdi:plus
-                  name: KANAL
+                  name: CHANNEL
                   entity: switch.tivo_channel_up
                   hold_action: none
                   tap_action:
@@ -593,7 +593,7 @@ cards:
                 card:
                   type: entity-button
                   icon: mdi:arrow-up-bold
-                  name: UPP
+                  name: "UP"
                   entity: input_boolean.shield_dummy
                   hold_action: none
                   tap_action:
@@ -634,7 +634,7 @@ cards:
                 card:
                   type: entity-button
                   icon: mdi:arrow-left-bold
-                  name: VÄNSTER
+                  name: "LEFT"
                   entity: input_boolean.shield_dummy
                   hold_action: none
                   tap_action:
@@ -652,7 +652,7 @@ cards:
                 card:
                   type: entity-button
                   icon: mdi:camera-control
-                  name: ENTER
+                  name: "ENTER"
                   entity: input_boolean.shield_dummy
                   hold_action: none
                   tap_action:
@@ -670,7 +670,7 @@ cards:
                 card:
                   type: entity-button
                   icon: mdi:arrow-right-bold
-                  name: HÖGER
+                  name: "RIGHT"
                   entity: input_boolean.shield_dummy
                   hold_action: none
                   tap_action:
@@ -693,7 +693,7 @@ cards:
                 card:
                   type: entity-button
                   icon: mdi:backburger
-                  name: BACK
+                  name: "BACK"
                   entity: input_boolean.shield_dummy
                   hold_action: none
                   tap_action:
@@ -711,7 +711,7 @@ cards:
                 card:
                   type: entity-button
                   icon: mdi:arrow-down-bold
-                  name: NER
+                  name: "DOWN"
                   entity: input_boolean.shield_dummy
                   hold_action: none
                   tap_action:
@@ -729,7 +729,7 @@ cards:
                 card:
                   type: entity-button
                   icon: mdi:home-circle
-                  name: HOME
+                  name: "HOME"
                   entity: input_boolean.shield_dummy
                   hold_action: none
                   tap_action:
@@ -752,7 +752,7 @@ cards:
                 card:
                   type: entity-button
                   icon: mdi:play
-                  name: PLAY
+                  name: "PLAY"
                   entity: input_boolean.shield_dummy
                   hold_action: none
                   tap_action:
@@ -769,8 +769,8 @@ cards:
               - type: custom:card-modder
                 card:
                   type: entity-button
-                  icon: mdi:play-pause
-                  name: PLAY/PAUSE
+                  icon: mdi:pause
+                  name: "PAUSE"
                   entity: input_boolean.shield_dummy
                   hold_action: none
                   tap_action:
@@ -788,7 +788,7 @@ cards:
                 card:
                   type: entity-button
                   icon: mdi:stop
-                  name: STOP
+                  name: "STOP"
                   entity: input_boolean.shield_dummy
                   hold_action: none
                   tap_action:
@@ -1211,7 +1211,7 @@ cards:
                 card:
                   type: entity-button
                   icon: mdi:volume-plus
-                  name: VOLYM
+                  name: "VOLYM"
                   entity: input_boolean.sonos_vol_up
                   hold_action: none
                   tap_action:
@@ -1228,7 +1228,7 @@ cards:
                 card:
                   type: entity-button
                   icon: mdi:volume-minus
-                  name: VOLYM
+                  name: "VOLYM"
                   entity: input_boolean.sonos_vol_down
                   hold_action: none
                   tap_action:
@@ -1245,7 +1245,7 @@ cards:
                 card:
                   type: entity-button
                   icon: mdi:volume-mute
-                  name: MUTE
+                  name: "MUTE"
                   entity: input_boolean.sonos_vol_mute
                   hold_action: none
                   tap_action:
@@ -1262,7 +1262,7 @@ cards:
                 card:
                   type: entity-button
                   icon: mdi:television-classic
-                  name: LIVE TV
+                  name: "LIVE TV"
                   entity: switch.tivo_live_tv
                   hold_action: none
                   tap_action:
