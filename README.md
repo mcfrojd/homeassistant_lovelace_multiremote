@@ -7,14 +7,14 @@ Lovelace example of my multi remote.
 
 
 
-#Lovelace Cards Used:
+### Lovelace Cards Used:
 
   - entity-button    | https://www.home-assistant.io/lovelace/entity-button/
   - horizontal-stack | https://www.home-assistant.io/lovelace/horizontal-stack/
   - picture          | https://www.home-assistant.io/lovelace/picture/
   - picture-elements | https://www.home-assistant.io/lovelace/picture-elements/
 
-##Custom Cards Used:
+### Custom Cards Used:
 
   - card-modder            | https://github.com/thomasloven/lovelace-card-modder
   - card-tools             | https://github.com/thomasloven/lovelace-card-tools
@@ -22,21 +22,21 @@ Lovelace example of my multi remote.
   - layout-card            | https://github.com/thomasloven/lovelace-layout-card
   - state-switch           | https://github.com/thomasloven/lovelace-state-switch
 
-###Custom Components Used:
+### Custom Components Used:
 
   - androidtv | https://github.com/a1ex4/home-assistant/blob/androidtv/homeassistant/components/media_player/androidtv.py
 
-Community Hass.io Add-ons Used:
+### Community Hass.io Add-ons Used:
 
   - ADB - Android Debug Bridge | https://github.com/hassio-addons/addon-adb
   - Node-RED                   | https://github.com/hassio-addons/addon-node-red
 
-Home-Assistant Components Used:
+### Home-Assistant Components Used:
 
   - TCP Sensor     | https://www.home-assistant.io/components/sensor.tcp/
   - Telnet Switch  | https://www.home-assistant.io/components/switch.telnet/
 
-Useful Forum Links:
+### Useful Forum Links:
 
   - 
   - 
