@@ -1,12 +1,12 @@
 title: Home Control Panel
 resources:
-  - url: /local/card-tools.js?v=97d985
+  - url: /customcards/card-tools.js
     type: js
-  - url: /local/card-modder.js?v=f3d96f
+  - url: /customcards/card-modder.js
     type: js
-  - url: /local/compact-custom-header.js?v=1.0.0b4
+  - url: /customcards/compact-custom-header.js
     type: module
-  - url: /local/state-switch.js?v=f06d3d
+  - url: /customcards/state-switch.js
     type: js
   
 views:
