@@ -1,4 +1,4 @@
-# McFrojd's Home Assistant Lovelace Multiremote
+# McFrojd's Home Assistant Lovelace Multi Remote
 Lovelace example of my multi remote.
 
 <p align="center">
