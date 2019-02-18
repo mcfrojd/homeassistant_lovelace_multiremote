@@ -15,7 +15,7 @@ cards:
           disable: false
           options: clock
           clock_format: 24
-          menu: hide
+          menu: show
           notification: hide
 ###################################################################################################
 ## Navigation Buttons (Shown on top of all remotes)
@@ -45,7 +45,7 @@ cards:
           type: entity-button
           icon: hide
           name: SHIELD
-          entity: input_boolean.shield_dummy
+          entity: input_boolean.dummy
           hold_action: none
           tap_action:
             action: call-service
@@ -63,7 +63,7 @@ cards:
           type: entity-button
           icon: hide
           name: KANALER
-          entity: input_boolean.shield_dummy
+          entity: input_boolean.dummy
           hold_action: none
           tap_action:
             action: call-service
@@ -81,7 +81,7 @@ cards:
           type: entity-button
           icon: hide
           name: RADIO
-          entity: input_boolean.shield_dummy
+          entity: input_boolean.dummy
           hold_action: none
           tap_action:
             action: call-service
@@ -189,13 +189,13 @@ cards:
                   type: entity-button
                   icon: mdi:volume-plus
                   name: VOLUME
-                  entity: input_boolean.sonos_vol_up
+                  entity: input_boolean.dummy
                   hold_action: none
                   tap_action:
                     action: call-service
-                    service: input_boolean.turn_on
+                    service: media_player.volume_up
                     service_data:
-                      entity_id: input_boolean.sonos_vol_up
+                      entity_id: media_player.sonos_living_room
                 style:
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
@@ -258,13 +258,13 @@ cards:
                   type: entity-button
                   icon: mdi:volume-minus
                   name: VOLYM
-                  entity: input_boolean.sonos_vol_down
+                  entity: input_boolean.dummy
                   hold_action: none
                   tap_action:
                     action: call-service
-                    service: input_boolean.turn_on
+                    service: media_player.volume_down
                     service_data:
-                      entity_id: input_boolean.sonos_vol_down
+                      entity_id: media_player.sonos_living_room
                 style:
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
@@ -327,13 +327,19 @@ cards:
                   type: entity-button
                   icon: mdi:volume-mute
                   name: MUTE
-                  entity: input_boolean.sonos_vol_mute
-                  hold_action: none
+                  entity: input_boolean.dummy
                   tap_action:
                     action: call-service
-                    service: input_boolean.turn_on
+                    service: media_player.volume_mute
                     service_data:
-                      entity_id: input_boolean.sonos_vol_mute
+                      entity_id: media_player.sonos_living_room
+                      is_volume_muted: true
+                  hold_action:
+                    action: call-service
+                    service: media_player.volume_mute
+                    service_data:
+                      entity_id: media_player.sonos_living_room
+                      is_volume_muted: false
                 style:
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
@@ -568,7 +574,7 @@ cards:
                   type: entity-button
                   icon: mdi:power
                   name: "ON"
-                  entity: input_boolean.shield_dummy
+                  entity: input_boolean.dummy
                   hold_action: none
                   tap_action:
                     action: call-service
@@ -586,7 +592,7 @@ cards:
                   type: entity-button
                   icon: mdi:arrow-up-bold
                   name: "UP"
-                  entity: input_boolean.shield_dummy
+                  entity: input_boolean.dummy
                   hold_action: none
                   tap_action:
                     action: call-service
@@ -604,7 +610,7 @@ cards:
                   type: entity-button
                   icon: mdi:power-off
                   name: "OFF"
-                  entity: input_boolean.shield_dummy
+                  entity: input_boolean.dummy
                   hold_action: none
                   tap_action:
                     action: call-service
@@ -627,7 +633,7 @@ cards:
                   type: entity-button
                   icon: mdi:arrow-left-bold
                   name: "LEFT"
-                  entity: input_boolean.shield_dummy
+                  entity: input_boolean.dummy
                   hold_action: none
                   tap_action:
                     action: call-service
@@ -645,7 +651,7 @@ cards:
                   type: entity-button
                   icon: mdi:camera-control
                   name: "ENTER"
-                  entity: input_boolean.shield_dummy
+                  entity: input_boolean.dummy
                   hold_action: none
                   tap_action:
                     action: call-service
@@ -663,7 +669,7 @@ cards:
                   type: entity-button
                   icon: mdi:arrow-right-bold
                   name: "RIGHT"
-                  entity: input_boolean.shield_dummy
+                  entity: input_boolean.dummy
                   hold_action: none
                   tap_action:
                     action: call-service
@@ -686,7 +692,7 @@ cards:
                   type: entity-button
                   icon: mdi:backburger
                   name: "BACK"
-                  entity: input_boolean.shield_dummy
+                  entity: input_boolean.dummy
                   hold_action: none
                   tap_action:
                     action: call-service
@@ -704,7 +710,7 @@ cards:
                   type: entity-button
                   icon: mdi:arrow-down-bold
                   name: "DOWN"
-                  entity: input_boolean.shield_dummy
+                  entity: input_boolean.dummy
                   hold_action: none
                   tap_action:
                     action: call-service
@@ -722,7 +728,7 @@ cards:
                   type: entity-button
                   icon: mdi:home-circle
                   name: "HOME"
-                  entity: input_boolean.shield_dummy
+                  entity: input_boolean.dummy
                   hold_action: none
                   tap_action:
                     action: call-service
@@ -745,7 +751,7 @@ cards:
                   type: entity-button
                   icon: mdi:play
                   name: "PLAY"
-                  entity: input_boolean.shield_dummy
+                  entity: input_boolean.dummy
                   hold_action: none
                   tap_action:
                     action: call-service
@@ -763,7 +769,7 @@ cards:
                   type: entity-button
                   icon: mdi:pause
                   name: "PAUSE"
-                  entity: input_boolean.shield_dummy
+                  entity: input_boolean.dummy
                   hold_action: none
                   tap_action:
                     action: call-service
@@ -781,7 +787,7 @@ cards:
                   type: entity-button
                   icon: mdi:stop
                   name: "STOP"
-                  entity: input_boolean.shield_dummy
+                  entity: input_boolean.dummy
                   hold_action: none
                   tap_action:
                     action: call-service
@@ -1189,13 +1195,13 @@ cards:
                   type: entity-button
                   icon: mdi:volume-plus
                   name: "VOLYM"
-                  entity: input_boolean.sonos_vol_up
+                  entity: input_boolean.dummy
                   hold_action: none
                   tap_action:
                     action: call-service
-                    service: input_boolean.turn_on
+                    service: media_player.volume_up
                     service_data:
-                      entity_id: input_boolean.sonos_vol_up
+                      entity_id: media_player.sonos_living_room
                 style:
                   padding: 5px 5px 5px 5px
                   background-color: rgba(56,60,69,1)
@@ -1207,13 +1213,13 @@ cards:
                   type: entity-button
                   icon: mdi:volume-minus
                   name: "VOLYM"
-                  entity: input_boolean.sonos_vol_down
+                  entity: input_boolean.dummy
                   hold_action: none
                   tap_action:
                     action: call-service
-                    service: input_boolean.turn_on
+                    service: media_player.volume_down
                     service_data:
-                      entity_id: input_boolean.sonos_vol_down
+                      entity_id: media_player.sonos_living_room
                 style:
                   padding: 5px 5px 5px 5px
                   background-color: rgba(56,60,69,1)
@@ -1225,13 +1231,20 @@ cards:
                   type: entity-button
                   icon: mdi:volume-mute
                   name: "MUTE"
-                  entity: input_boolean.sonos_vol_mute
+                  entity: input_boolean.dummy
                   hold_action: none
                   tap_action:
                     action: call-service
-                    service: input_boolean.turn_on
+                    service: media_player.volume_mute
                     service_data:
-                      entity_id: input_boolean.sonos_vol_mute
+                      entity_id: media_player.sonos_living_room
+                      is_volume_muted: true
+                  hold_action:
+                    action: call-service
+                    service: media_player.volume_mute
+                    service_data:
+                      entity_id: media_player.sonos_living_room
+                      is_volume_muted: false
                 style:
                   padding: 5px 5px 5px 5px
                   background-color: rgba(56,60,69,1)
