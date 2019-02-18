@@ -1,25 +1,6 @@
 ############################################################################
 ## SONOS
 ############################################################################
-# Scripts
-############################################################################
-script:
-  volym_null_sonos:
-    alias: "Set SONOS Volume to Zero"
-    sequence:
-    - service: media_player.volume_set
-      data_template:
-        entity_id: media_player.sonos_living_room
-        volume_level: 0.0
-#-------------------------------------------------
-  volym_normal_sonos:
-    alias: "Set SONOS Volume to Normal"
-    sequence:
-    - service: media_player.volume_set
-      data_template:
-        entity_id: media_player.sonos_living_room
-        volume_level: 0.12
-############################################################################
 # Sensors
 ############################################################################
 sensor:
