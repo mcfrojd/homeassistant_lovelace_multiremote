@@ -30,18 +30,6 @@ input_boolean:
     name: trigger tv
     initial: off
     icon: mdi:television
-  sonos_vol_up:
-    name: Sonos Vol Up
-    initial: off
-    icon: mdi:volume-plus
-  sonos_vol_down:
-    name: Sonos Vol Down
-    initial: off
-    icon: mdi:volume-minus
-  sonos_vol_mute:
-    name: Sonos Vol Mute
-    initial: off
-    icon: mdi:volume-mute
-  shield_dummy:
-    name: Shield Dummy
+  dummy:
+    name: Input Dummy
     initial: off
