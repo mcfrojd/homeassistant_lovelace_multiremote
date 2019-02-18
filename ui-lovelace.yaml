@@ -8,7 +8,9 @@ resources:
     type: module
   - url: /customcards/state-switch.js
     type: js
-  
+  - url: /customcards/tracker-card.js
+  type: js
+
 views:
   - !include remote.yaml
   
