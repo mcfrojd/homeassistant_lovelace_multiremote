@@ -4,6 +4,7 @@
 title: Settings
 icon: mdi:settings-outline
 cards:
+  - type: custom:compact-custom-header
   - type: custom:tracker-card
     title:
     trackers:
