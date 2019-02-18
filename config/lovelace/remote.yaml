@@ -5,7 +5,18 @@
 title: Remote
 icon: mdi:remote
 cards:
-#  - type: custom:compact-custom-header
+  - type: custom:compact-custom-header
+    main_config: true
+    disable: true
+    exceptions:
+      - conditions:
+          user: remote
+        config:
+          disable: false
+          options: clock
+          clock_format: 24
+          menu: hide
+          notification: hide
 ###################################################################################################
 ## Navigation Buttons (Shown on top of all remotes)
 ###################################################################################################
