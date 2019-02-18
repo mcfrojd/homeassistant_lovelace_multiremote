@@ -325,7 +325,7 @@ cards:
               - type: custom:card-modder
                 card:
                   type: entity-button
-                  icon: mdi:volume-mute
+                  icon: mdi:volume-
                   name: MUTE
                   entity: input_boolean.dummy
                   tap_action:
@@ -341,7 +341,7 @@ cards:
                       entity_id: media_player.sonos_living_room
                       is_volume_muted: false
                 style:
-                  background-color: rgba(56,60,69,1)
+                  background-color: '[[ if(sensor.sonos_muted == "True", "red", "rgba(56, 60, 69, 1)") ]]'
                   border-radius: 20px
                   border: solid 3px rgba(80,120,140,1)
               - type: custom:card-modder
@@ -1247,7 +1247,7 @@ cards:
                       is_volume_muted: false
                 style:
                   padding: 5px 5px 5px 5px
-                  background-color: rgba(56,60,69,1)
+                  background-color: '[[ if(sensor.sonos_muted == "True", "red", "rgba(56, 60, 69, 1)") ]]'
                   border-radius: 20px
                   border: solid 3px rgba(80,120,140,1)
                   box-shadow: 3px 3px rgba(0,0,0,0.4)
