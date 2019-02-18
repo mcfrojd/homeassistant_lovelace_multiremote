@@ -1,0 +1,11 @@
+############################################################################
+## SONOS
+############################################################################
+# Sensors
+############################################################################
+sensor:
+  - platform: template
+    sensors:
+      sonos_volume_level:
+        friendly_name: "Volym"
+        value_template: "{{ ((state_attr('media_player.sonos_living_room', 'volume_level') * 100)|round (0))|int}}"
